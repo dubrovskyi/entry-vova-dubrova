@@ -1,4 +1,9 @@
-FROM bash:4.4
+FROM python:3.7-slim
 
-COPY bcm.sh /
-CMD [ "bash", "/bcm.sh" ]
+WORKDIR /usr/app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+ENTRYPOINT ["python", "hello.py"]
